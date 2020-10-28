@@ -6,7 +6,7 @@ import re
 from datetime import timedelta
 from googleapiclient.discovery import build
 
-api_key = "yourAPIkeyhere"
+api_key = "yourapikeyhere"
 
 youtube = build('youtube', 'v3', developerKey=api_key)
 
@@ -16,11 +16,13 @@ seconds_pattern = re.compile(r'(\d+)S')
 
 total_seconds = 0
 
+playlist_id = "PLMBTl5yXyrGQ68Ny1mXCAaSwbjpcVwm49"
+
 nextPageToken = None
 while True:
     pl_request = youtube.playlistItems().list(
         part='contentDetails',
-        playlistId='PL-osiE80TeTvviVL0pJGX5mZCo7CAvIuf',
+        playlistId=playlist_id,
         maxResults=50,
         pageToken=nextPageToken
     )
